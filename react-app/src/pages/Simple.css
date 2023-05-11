@@ -1,0 +1,67 @@
+.container-box {
+	margin-top: 3%;
+	margin-left: 8%;
+	margin-right: 8%;
+	background-color: ghostwhite;
+	box-shadow: 10px 15px beige;
+	font-size: 20px;
+
+}
+
+.price_tag_{
+	font-size: 40px;
+}
+
+
+.product__view{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-bottom: 10%;
+	
+	
+}
+.details_product{
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.check_out__{
+	border: 1px solid grey;
+	border-radius: 1rem;
+	width: 9rem;
+	height: 12rem;
+	margin-top: 5rem;
+	margin-left: 4rem;
+
+}
+.img_prod{
+	margin-top: 50px;
+	margin-left: 40px;
+	width: 20rem;
+}
+
+.price_tag_{
+	color: indianred;
+	font-size: 50px;
+	margin-left: 10px;
+
+}
+
+.add_tocartbutton{
+	width: 110px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+}
+.add_toexit{
+	width: 110px;
+
+}
+
+.stocks_remaining{
+	font-size: 13px;
+}
+
+.quantity_stocks{
+	text-align: center;
+}

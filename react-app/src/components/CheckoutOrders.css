@@ -1,0 +1,14 @@
+.card_product-2 {
+  border: 1px solid;
+  width: 15rem;
+  background-color: ghostwhite;
+  box-shadow: 10px 15px beige;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+
+.price_order {
+  font-size: 20px;
+  color: indianred;
+}

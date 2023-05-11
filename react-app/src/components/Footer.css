@@ -1,0 +1,17 @@
+.footer {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #131921;
+  /* bottom: auto; */
+  z-index: 1;
+  /* position: relative;
+  min-height: max-content; */
+  min-height: 50px;
+}
+
+.copy {
+  margin: auto;
+  align-items: center;
+  color: white;
+}

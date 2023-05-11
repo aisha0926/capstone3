@@ -1,0 +1,51 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.outer_bg{
+	background-image: url(https://thumbs.dreamstime.com/b/vector-background-seamless-pattern-hand-drawn-shopping-dood-vector-background-seamless-pattern-hand-drawn-shopping-108360469.jpg);
+	height: 100vh;
+}
+
+.Form__logo{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.inner_bgcover{
+	background-color: rgba(0, 13, 26, 0.95);
+	height: 100vh;
+}
+
+.registration__form{
+	width: 35vw;
+	color: white;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.signup_h1{
+	color: darkorange;
+}
+
+.form_text{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.btn_submitreg{
+	width: 10rem;
+	font-size: 20px;
+}
+
+.logo__tinda{
+	margin-top: 20%;
+	margin-left: 30%;
+}
+
+.span_text{
+	margin-top: 30px;
+	margin-left: 36%;
+}
