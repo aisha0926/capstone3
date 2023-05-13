@@ -1,35 +1,48 @@
-import { Form, Button, Row, Col, InputGroup } from "react-bootstrap";
-import Swal from "sweetalert2";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
 // import UseContext from '../UserContext';
 
 export default function AdminComponent() {
   //   console.log(user);
   const history = useNavigate();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
-  const [categories, setCategories] = useState([]);
-  const [categorySelected, setCategorySelected] = useState("");
+  const [categorySelected, setCategorySelected] = useState('');
 
-  fetch("http://localhost:4000/products/getCategories")
-    .then((result) => result.json())
-    .then((data) => setCategories(data));
+  // fetch('https://aqueous-atoll-50380.herokuapp.com/products/getCategories')
+  //   .then((result) => result.json())
+  //   .then((data) => setCategories(data));
 
-  const category = categories.map((data) => {
-    return <option value={data}>{data}</option>;
+  const categoryData = [
+    'Garden & Outdoors',
+    'Toys, Children & Baby',
+    'Clothes, Shoes, Jewellery & Accessories',
+    'Sports & Outdoors',
+    'Food & Grocery',
+    'Home & Kitchen',
+    'Software',
+    'Computer & Accessories',
+  ].sort();
+
+  const category = categoryData.map((data, index) => {
+    return (
+      <option value={data} key={`seller-option-${index}`}>
+        {data}
+      </option>
+    );
   });
 
   function addProduct(e) {
     e.preventDefault();
-
-    fetch("http://localhost:4000/seller/add", {
-      method: "POST",
+    fetch('https://aqueous-atoll-50380.herokuapp.com/seller/add', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({
         name: name,
@@ -41,48 +54,46 @@ export default function AdminComponent() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data) {
           Swal.fire({
-            title: "Added product successfully",
-            icon: "success",
+            title: 'Added product successfully',
+            icon: 'success',
           });
-          history("/admin");
+          history('/admin');
         } else {
           Swal.fire({
-            title: "Failed in adding product",
-            icon: "error",
-            text: "Something went wrong",
+            title: 'Failed in adding product',
+            icon: 'error',
+            text: 'Something went wrong',
           });
         }
-
-        setName("");
+        setName('');
         setPrice(0);
-        setDescription("");
+        setDescription('');
         setQuantity(0);
         // window.location.reload();
       });
   }
 
   return (
-    <Form onSubmit={(e) => addProduct(e)} className="mt-3 mb-5">
+    <Form onSubmit={addProduct} className='mt-3 mb-5'>
       <Row xs={12} md={12}>
-        <Form.Group as={Col} className="mb-3" controlId="productName">
+        <Form.Group as={Col} className='mb-3' controlId='productName'>
           <Form.Label>Product Name</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Enter company name"
+            type='text'
+            placeholder='Enter company name'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group as={Col} className="mb-3" controlId="price">
+        <Form.Group as={Col} className='mb-3' controlId='price'>
           <Form.Label>Price</Form.Label>
-          <InputGroup className="mb-2">
+          <InputGroup className='mb-2'>
             <InputGroup.Text>£</InputGroup.Text>
             <Form.Control
-              type="number"
+              type='number'
               rows={3}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -91,31 +102,31 @@ export default function AdminComponent() {
         </Form.Group>
       </Row>
 
-      <Form.Group className="mb-3" controlId="description">
+      <Form.Group className='mb-3' controlId='description'>
         <Form.Label>Product description</Form.Label>
         <Form.Control
-          as="textarea"
+          as='textarea'
           rows={3}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </Form.Group>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} className="mb-3" controlId="quantity">
+      <Row className='mb-3'>
+        <Form.Group as={Col} className='mb-3' controlId='quantity'>
           <Form.Label>Quantity</Form.Label>
           <Form.Control
-            type="number"
+            type='number'
             rows={3}
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridState">
+        <Form.Group as={Col} controlId='formGridState'>
           <Form.Label>Category</Form.Label>
           <Form.Select
-            className="dropdownMenu"
+            className='dropdownMenu'
             value={categorySelected}
             onChange={(e) => setCategorySelected(e.target.value)}
             scrollable={true}
@@ -125,7 +136,7 @@ export default function AdminComponent() {
         </Form.Group>
       </Row>
 
-      <Button variant="primary" type="submit">
+      <Button variant='primary' type='submit'>
         Add product
       </Button>
     </Form>

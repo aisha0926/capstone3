@@ -1,24 +1,25 @@
-import { Table } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import SellerProductTable from "../components/SellerProductTable";
+import { Table } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import SellerProductTable from '../components/SellerProductTable';
+import Spinner from '../components/Spinner';
 
 export default function SellerProducts() {
   const [productData, setProductData] = useState([]);
+  const [loading, setLoading] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/seller/getSellerProduct`, {
-      method: "GET",
+    fetch(`https://aqueous-atoll-50380.herokuapp.com/seller/getSellerProduct`, {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        setLoading(true);
 
         let products = data.map((product) => {
-          // console.log(product);
           return (
             <SellerProductTable
               key={product._id}
@@ -27,26 +28,29 @@ export default function SellerProducts() {
             />
           );
         });
-        // console.log(products);
-        setProductData(products);
 
-        // console.log(productData);
+        setProductData(products);
+        setLoading(false);
       });
   }, []);
 
+  useEffect(() => {}, [productData, loading]);
+
   return (
-    <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Product Name</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>Quantity</th>
-          <th colSpan={2}>Category</th>
-        </tr>
-      </thead>
-      <tbody>{productData}</tbody>
+    <Table striped bordered hover variant='dark'>
+      <>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th colSpan={2}>Category</th>
+          </tr>
+        </thead>
+        <tbody>{productData}</tbody>
+      </>
     </Table>
   );
 }

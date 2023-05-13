@@ -9,7 +9,9 @@ export default function SellerData() {
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
 
-  fetch(`http://localhost:4000/seller/getSingleSeller/${user.id}`)
+  fetch(
+    `https://aqueous-atoll-50380.herokuapp.com/seller/getSingleSeller/${user.id}`
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
