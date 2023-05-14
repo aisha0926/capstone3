@@ -11,7 +11,7 @@ import { UserProvider } from './UserContext';
 import { useState, useEffect } from 'react';
 import AppNavBar from './components/AppNavBar';
 import Home from './pages/Home';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import AdminDashboard from './pages/AdminDashboard';
 import GetOrders from './pages/GetOrders';
 import Food from './pages/Food';
