@@ -22,3 +22,8 @@ spanDB {
   overflow: auto;
   margin: 0;
 }
+
+spanDB2 {
+  overflow: auto;
+  margin: 1rem;
+}
