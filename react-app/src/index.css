@@ -20,4 +20,5 @@ code {
 
 spanDB {
   overflow: auto;
+  margin: 0;
 }
